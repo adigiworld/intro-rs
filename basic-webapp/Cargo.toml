@@ -1,0 +1,9 @@
+[package]
+name = "basic-webapp"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = ["tcpserver", "tcpclient", "http", "httpserver",]
+
+[dependencies]
