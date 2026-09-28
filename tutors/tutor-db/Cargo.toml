@@ -1,0 +1,43 @@
+[package]
+name = "tutor-db"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+#Actix web framework and run-time
+actix-web = "4.2"
+actix-rt = "2.7"
+
+#Environment variable access libraries
+dotenv = "0.15.0"
+
+#Postgres access library
+sqlx = {version = "0.6.2", default-features = false, features = ["postgres","runtime-tokio-native-tls", "macros","chrono"]}
+
+# Data serialization library
+serde = { version = "1", features = ["derive"] }
+# Other utils
+chrono = {version = "0.4", features = ["serde"]}
+# Openssl for build (if openssl is not already installed on the dev server)
+openssl = { version = "0.10", features = ["vendored"] }
+
+[[bin]]
+name="iter1"
+path="src/bin/iter1.rs"
+
+[[bin]]
+name="iter2"
+path="src/bin/iter2.rs"
+
+[[bin]]
+name="iter3"
+path="src/bin/iter3.rs"
+
+[[bin]]
+name="iter4"
+path="src/bin/iter4.rs"
+
+[[bin]]
+name="err-test"
+path="src/bin/err-test.rs"
+
