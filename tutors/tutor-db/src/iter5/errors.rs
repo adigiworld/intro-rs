@@ -8,6 +8,7 @@ pub enum TutorError {
     DBError(String),
     ActixError(String),
     NotFound(String),
+    InvalidInput(String),
 }
 
 #[derive(Debug, Serialize)]
@@ -30,6 +31,10 @@ impl TutorError {
                 println!("Not found error occurred: {:?}", msg);
                 msg.into()
             }
+            TutorError::InvalidInput(msg) => {
+                println!("Invalid parameters received: {:?}", msg);
+                msg.into()
+            }
         }
     }
 }
@@ -41,6 +46,7 @@ impl error::ResponseError for TutorError {
                 StatusCode::INTERNAL_SERVER_ERROR
             }
             TutorError::NotFound(_msg) => StatusCode::NOT_FOUND,
+            TutorError::InvalidInput(_msg) => StatusCode::BAD_REQUEST,
         }
     }
     fn error_response(&self) -> HttpResponse {

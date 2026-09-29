@@ -38,6 +38,10 @@ name="iter4"
 path="src/bin/iter4.rs"
 
 [[bin]]
+name="iter5"
+path="src/bin/iter5.rs"
+
+[[bin]]
 name="err-test"
 path="src/bin/err-test.rs"
 
