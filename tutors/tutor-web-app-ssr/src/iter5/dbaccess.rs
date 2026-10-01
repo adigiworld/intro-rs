@@ -5,13 +5,9 @@ use sqlx::postgres::PgPool;
 //Return result
 pub async fn get_user_record(pool: &PgPool, username: String) -> Result<User, TutorError> {
     // Prepare SQL statement
-    let user_row = sqlx::query_as!(
-        User,
-        "SELECT * FROM ezyweb_user where username = $1",
-        username
-    )
-    .fetch_optional(pool)
-    .await?;
+    let user_row = sqlx::query_as!(User, "SELECT * FROM web_user where username = $1", username)
+        .fetch_optional(pool)
+        .await?;
 
     if let Some(user) = user_row {
         Ok(user)

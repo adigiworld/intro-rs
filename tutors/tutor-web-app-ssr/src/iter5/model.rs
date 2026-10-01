@@ -25,10 +25,3 @@ pub struct User {
     pub tutor_id: Option<i32>,
     pub user_password: String,
 }
-
-#[derive(Serialize, Deserialize, Debug, sqlx::FromRow)]
-pub struct User {
-    pub username: String,
-    pub tutor_id: i32,
-    pub user_password: String,
-}

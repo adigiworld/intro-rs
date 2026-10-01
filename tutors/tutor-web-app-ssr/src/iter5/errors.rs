@@ -1,4 +1,8 @@
-use serde::{Deserialize, Serialize};
+// use serde::{Deserialize, Serialize};
+use actix_web::{HttpResponse, Result, error, http::StatusCode};
+use serde::Serialize;
+use sqlx::error::Error as SQLxError;
+use std::fmt;
 
 #[derive(Debug, Serialize)]
 pub enum TutorError {
@@ -66,4 +70,10 @@ impl From<actix_web::error::Error> for TutorError {
     }
 }
 
-// impl From<SQLxError> for TutorError {}
+impl From<SQLxError> for TutorError {
+    fn from(err: SQLxError) -> Self {
+        TutorError::DBError(err.to_string())
+    }
+}
+
+// Listing 8.2 - end
